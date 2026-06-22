@@ -1,29 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Mi sitio en GitHub Pages — ADD_GPS</title>
-    <style>
-      body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; max-width: 720px; margin: 4rem auto; padding: 0 1rem; line-height:1.6; }
-      header { text-align:center; margin-bottom:2rem; }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>Proyecto ADD_GPS</h1>
-      <p>Sitio de pruebas publicado con GitHub Pages.</p>
-    </header>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro GPS</title>
 
-    <main>
-      <section>
-        <h2>Bienvenido</h2>
-        <p>Este es el repositorio <strong>ADD_GPS-github.io-</strong>. Edita <code>index.html</code> para personalizarlo.</p>
-      </section>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-      <footer>
-        <p>Publicado con mucho esfuerzo en GitHub Pages — @Leoelcorreo2</p>
-      </footer>
-    </main>
-  </body>
+<h1>Registro GPS</h1>
+
+<div class="card">
+
+    <h2>Posición actual</h2>
+
+    <p><b>Latitud:</b> <span id="lat">-</span></p>
+    <p><b>Longitud:</b> <span id="lon">-</span></p>
+    <p><b>Altitud:</b> <span id="alt">-</span></p>
+
+    <button id="btnGps">Actualizar GPS</button>
+    <button id="btnAdd">Añadir ubicación</button>
+    <button id="btnEdit">Editar ubicaciones</button>
+    <button id="btnCsv">Exportar CSV</button>
+
+</div>
+
+<div id="panelListado" class="hidden">
+
+    <h2>Ubicaciones guardadas</h2>
+
+    <table id="tabla">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Lugar</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+<div id="panelEdicion" class="hidden">
+
+    <h2>Editar ubicación</h2>
+
+    <input type="hidden" id="idx">
+
+    <label>Longitud</label>
+    <input id="eLon">
+
+    <label>Latitud</label>
+    <input id="eLat">
+
+    <label>Altitud</label>
+    <input id="eAlt">
+
+    <label>Fecha</label>
+    <input id="eFecha">
+
+    <label>Hora</label>
+    <input id="eHora">
+
+    <label>Provincia</label>
+    <input id="eProvincia">
+
+    <label>Lugar</label>
+    <input id="eLugar">
+
+    <label>Notas</label>
+    <textarea id="eNotas"></textarea>
+
+    <button id="btnUpdate">
+        Actualizar
+    </button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
 </html>
