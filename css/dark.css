@@ -1,0 +1,265 @@
+/* ===================================
+   VARIABLES DARK MODE
+=================================== */
+
+[data-theme="dark"] {
+
+    --primary: #42A5F5;
+    --primary-dark: #1E88E5;
+
+    --secondary: #64B5F6;
+
+    --background: #121212;
+    --surface: #1E1E1E;
+
+    --text: #F5F5F5;
+    --text-light: #BDBDBD;
+
+    --border: #333333;
+
+    --danger: #EF5350;
+    --success: #66BB6A;
+
+    --shadow:
+        0 2px 12px rgba(0,0,0,0.45);
+
+}
+
+/* ===================================
+   AUTO DARK MODE
+=================================== */
+
+@media (prefers-color-scheme: dark) {
+
+    :root:not([data-theme="light"]) {
+
+        --primary: #42A5F5;
+        --primary-dark: #1E88E5;
+
+        --secondary: #64B5F6;
+
+        --background: #121212;
+        --surface: #1E1E1E;
+
+        --text: #F5F5F5;
+        --text-light: #BDBDBD;
+
+        --border: #333333;
+
+        --danger: #EF5350;
+        --success: #66BB6A;
+
+        --shadow:
+            0 2px 12px rgba(0,0,0,0.45);
+
+    }
+
+}
+
+/* ===================================
+   BODY
+=================================== */
+
+[data-theme="dark"] body {
+
+    background: var(--background);
+    color: var(--text);
+
+}
+
+/* ===================================
+   HEADER
+=================================== */
+
+[data-theme="dark"] header {
+
+    background: #0D47A1;
+
+}
+
+/* ===================================
+   CARDS
+=================================== */
+
+[data-theme="dark"] .card {
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+}
+
+/* ===================================
+   INPUTS
+=================================== */
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+
+    background: #252525;
+
+    color: var(--text);
+
+    border-color: var(--border);
+
+}
+
+[data-theme="dark"] input::placeholder,
+[data-theme="dark"] textarea::placeholder {
+
+    color: #999;
+
+}
+
+/* ===================================
+   GPS GRID
+=================================== */
+
+[data-theme="dark"] .gps-grid div {
+
+    background: #252525;
+
+    border-color: var(--border);
+
+}
+
+/* ===================================
+   LISTADOS
+=================================== */
+
+[data-theme="dark"] .location-card {
+
+    background: #252525;
+
+    border-color: var(--border);
+
+}
+
+[data-theme="dark"] .location-card p {
+
+    color: var(--text-light);
+
+}
+
+/* ===================================
+   MODAL
+=================================== */
+
+[data-theme="dark"] .modal-content {
+
+    background: var(--surface);
+
+    color: var(--text);
+
+}
+
+/* ===================================
+   BOTTOM NAV
+=================================== */
+
+[data-theme="dark"] .bottom-nav {
+
+    background: #1A1A1A;
+
+    border-top: 1px solid var(--border);
+
+}
+
+[data-theme="dark"] .bottom-nav button {
+
+    background: #1A1A1A;
+
+    color: var(--text-light);
+
+}
+
+[data-theme="dark"] .bottom-nav button.active {
+
+    color: var(--primary);
+
+}
+
+/* ===================================
+   MAPA
+=================================== */
+
+[data-theme="dark"] #mapContainer {
+
+    border: 1px solid var(--border);
+
+}
+
+/* ===================================
+   SCROLLBAR
+=================================== */
+
+[data-theme="dark"] ::-webkit-scrollbar {
+
+    width: 8px;
+
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+
+    background: #1A1A1A;
+
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+
+    background: #555;
+
+    border-radius: 20px;
+
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+
+    background: #777;
+
+}
+
+/* ===================================
+   TABLAS FUTURAS
+=================================== */
+
+[data-theme="dark"] table {
+
+    background: var(--surface);
+
+    color: var(--text);
+
+}
+
+[data-theme="dark"] th {
+
+    background: #252525;
+
+}
+
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+
+    border-color: var(--border);
+
+}
+
+/* ===================================
+   TRANSICIONES
+=================================== */
+
+body,
+.card,
+.location-card,
+.bottom-nav,
+.bottom-nav button,
+input,
+textarea,
+.modal-content {
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+
+}
