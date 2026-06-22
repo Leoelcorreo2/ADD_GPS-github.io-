@@ -1,0 +1,272 @@
+/* ===================================
+   MÓVILES PEQUEÑOS
+   (hasta 480px)
+=================================== */
+
+@media screen and (max-width: 480px) {
+
+    header h1 {
+
+        font-size: 1.1rem;
+
+    }
+
+    main {
+
+        padding: 10px;
+
+    }
+
+    .card {
+
+        padding: 14px;
+
+    }
+
+    .gps-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    button {
+
+        min-height: 50px;
+
+        font-size: 0.9rem;
+
+    }
+
+    input,
+    textarea {
+
+        font-size: 16px;
+
+        /* evita zoom automático Android */
+    }
+
+    .button-group {
+
+        flex-direction: column;
+
+    }
+
+    .location-actions {
+
+        flex-direction: column;
+
+    }
+
+}
+
+/* ===================================
+   SMARTPHONES NORMALES
+=================================== */
+
+@media screen and (min-width: 481px)
+and (max-width: 767px) {
+
+    .gps-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+}
+
+/* ===================================
+   TABLETS
+=================================== */
+
+@media screen and (min-width: 768px) {
+
+    main {
+
+        max-width: 1000px;
+
+        margin: auto;
+
+    }
+
+    .gps-grid {
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+    }
+
+    .card {
+
+        padding: 25px;
+
+    }
+
+    button {
+
+        max-width: 350px;
+
+    }
+
+}
+
+/* ===================================
+   TABLETS GRANDES
+=================================== */
+
+@media screen and (min-width: 1024px) {
+
+    main {
+
+        max-width: 1200px;
+
+    }
+
+    .modal-content {
+
+        max-width: 800px;
+
+    }
+
+}
+
+/* ===================================
+   MODO HORIZONTAL
+=================================== */
+
+@media screen and (orientation: landscape) {
+
+    header {
+
+        padding: 12px 20px;
+
+    }
+
+    #mapContainer {
+
+        height: calc(100vh - 120px);
+
+    }
+
+    .bottom-nav {
+
+        height: 60px;
+
+    }
+
+}
+
+/* ===================================
+   SAFE AREAS
+   Android modernos
+=================================== */
+
+body {
+
+    padding-bottom:
+        calc(
+            90px +
+            env(safe-area-inset-bottom)
+        );
+
+}
+
+.bottom-nav {
+
+    padding-bottom:
+        env(safe-area-inset-bottom);
+
+}
+
+/* ===================================
+   EFECTOS TÁCTILES
+=================================== */
+
+button {
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+    touch-action:
+        manipulation;
+
+}
+
+input,
+textarea {
+
+    touch-action:
+        manipulation;
+
+}
+
+/* ===================================
+   SCROLL SUAVE
+=================================== */
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+/* ===================================
+   MEJORAS DE RENDIMIENTO
+=================================== */
+
+.page {
+
+    will-change:
+        opacity,
+        transform;
+
+}
+
+.location-card {
+
+    will-change:
+        transform;
+
+}
+
+/* ===================================
+   PREVENCIÓN DE SELECCIÓN
+=================================== */
+
+.bottom-nav button,
+.location-actions button {
+
+    user-select: none;
+
+    -webkit-user-select: none;
+
+}
+
+/* ===================================
+   IMPRESIÓN
+=================================== */
+
+@media print {
+
+    .bottom-nav,
+    button,
+    .location-actions {
+
+        display: none !important;
+
+    }
+
+    body {
+
+        background: white;
+
+    }
+
+    .card {
+
+        box-shadow: none;
+
+        border: 1px solid #ccc;
+
+    }
+
+}
