@@ -1,85 +1,335 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Registro GPS</title>
 
-<link rel="stylesheet" href="style.css">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="theme-color"
+        content="#1565C0">
+
+    <title>
+        Registro GPS Pro
+    </title>
+
+    <link
+        rel="manifest"
+        href="manifest.json">
+
+    <link
+        rel="stylesheet"
+        href="css/app.css">
+
+    <link
+        rel="stylesheet"
+        href="css/mobile.css">
+
+    <link
+        rel="stylesheet"
+        href="css/dark.css">
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
 </head>
+
 <body>
 
-<h1>Registro GPS</h1>
+<header>
 
-<div class="card">
+    <h1>
+        Registro GPS Pro
+    </h1>
 
-    <h2>Posición actual</h2>
+</header>
 
-    <p><b>Latitud:</b> <span id="lat">-</span></p>
-    <p><b>Longitud:</b> <span id="lon">-</span></p>
-    <p><b>Altitud:</b> <span id="alt">-</span></p>
+<nav class="bottom-nav">
 
-    <button id="btnGps">Actualizar GPS</button>
-    <button id="btnAdd">Añadir ubicación</button>
-    <button id="btnEdit">Editar ubicaciones</button>
-    <button id="btnCsv">Exportar CSV</button>
+    <button
+        data-page="dashboard">
 
-</div>
+        📍
+        GPS
 
-<div id="panelListado" class="hidden">
-
-    <h2>Ubicaciones guardadas</h2>
-
-    <table id="tabla">
-        <thead>
-            <tr>
-                <th>Fecha</th>
-                <th>Lugar</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
-</div>
-
-<div id="panelEdicion" class="hidden">
-
-    <h2>Editar ubicación</h2>
-
-    <input type="hidden" id="idx">
-
-    <label>Longitud</label>
-    <input id="eLon">
-
-    <label>Latitud</label>
-    <input id="eLat">
-
-    <label>Altitud</label>
-    <input id="eAlt">
-
-    <label>Fecha</label>
-    <input id="eFecha">
-
-    <label>Hora</label>
-    <input id="eHora">
-
-    <label>Provincia</label>
-    <input id="eProvincia">
-
-    <label>Lugar</label>
-    <input id="eLugar">
-
-    <label>Notas</label>
-    <textarea id="eNotas"></textarea>
-
-    <button id="btnUpdate">
-        Actualizar
     </button>
 
+    <button
+        data-page="history">
+
+        📋
+        Historial
+
+    </button>
+
+    <button
+        data-page="map">
+
+        🗺️
+        Mapa
+
+    </button>
+
+    <button
+        data-page="settings">
+
+        ⚙️
+        Ajustes
+
+    </button>
+
+</nav>
+
+<main>
+
+<!-- DASHBOARD -->
+
+<section
+    id="dashboard"
+    class="page active">
+
+    <div class="card">
+
+        <h2>
+            Posición actual
+        </h2>
+
+        <div class="gps-grid">
+
+            <div>
+                <label>Latitud</label>
+                <span id="gpsLatitude">
+                    -
+                </span>
+            </div>
+
+            <div>
+                <label>Longitud</label>
+                <span id="gpsLongitude">
+                    -
+                </span>
+            </div>
+
+            <div>
+                <label>Altitud</label>
+                <span id="gpsAltitude">
+                    -
+                </span>
+            </div>
+
+            <div>
+                <label>Precisión</label>
+                <span id="gpsAccuracy">
+                    -
+                </span>
+            </div>
+
+        </div>
+
+        <div class="button-group">
+
+            <button id="btnLocate">
+                Actualizar GPS
+            </button>
+
+            <button id="btnAddLocation">
+                Añadir ubicación
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HISTORIAL -->
+
+<section
+    id="history"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            Historial
+        </h2>
+
+        <input
+            type="text"
+            id="searchLocation"
+            placeholder="Buscar ubicación">
+
+        <div
+            id="locationsList">
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- MAPA -->
+
+<section
+    id="map"
+    class="page">
+
+    <div id="mapContainer">
+
+    </div>
+
+</section>
+
+<!-- AJUSTES -->
+
+<section
+    id="settings"
+    class="page">
+
+    <div class="card">
+
+        <h2>
+            Ajustes
+        </h2>
+
+        <button id="btnExportCSV">
+            Exportar CSV
+        </button>
+
+        <button id="btnImportCSV">
+            Importar CSV
+        </button>
+
+        <button id="btnToggleDarkMode">
+            Modo oscuro
+        </button>
+
+        <button id="btnInstall">
+            Instalar App
+        </button>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- MODAL EDICIÓN -->
+
+<div
+    id="editModal"
+    class="modal hidden">
+
+    <div class="modal-content">
+
+        <h2>
+            Editar ubicación
+        </h2>
+
+        <input
+            type="hidden"
+            id="editId">
+
+        <label>
+            Longitud
+        </label>
+
+        <input
+            id="editLongitude">
+
+        <label>
+            Latitud
+        </label>
+
+        <input
+            id="editLatitude">
+
+        <label>
+            Altitud
+        </label>
+
+        <input
+            id="editAltitude">
+
+        <label>
+            Fecha
+        </label>
+
+        <input
+            id="editDate">
+
+        <label>
+            Hora
+        </label>
+
+        <input
+            id="editTime">
+
+        <label>
+            Provincia
+        </label>
+
+        <input
+            id="editProvince">
+
+        <label>
+            Lugar
+        </label>
+
+        <input
+            id="editPlace">
+
+        <label>
+            Notas
+        </label>
+
+        <textarea
+            id="editNotes"></textarea>
+
+        <div class="button-group">
+
+            <button
+                id="btnUpdateLocation">
+
+                Actualizar
+
+            </button>
+
+            <button
+                id="btnDeleteLocation">
+
+                Eliminar
+
+            </button>
+
+            <button
+                id="btnCloseModal">
+
+                Cancelar
+
+            </button>
+
+        </div>
+
+    </div>
+
 </div>
 
-<script src="app.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="js/db.js"></script>
+<script src="js/gps.js"></script>
+<script src="js/geocoder.js"></script>
+<script src="js/map.js"></script>
+<script src="js/csv.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
